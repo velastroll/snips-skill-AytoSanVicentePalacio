@@ -27,10 +27,10 @@ def intent_received(hermes, intentMessage):
         sentence = 'El correo electrónico del ayuntamiento es el ' + email
     elif intentMessage.slots[0].rawValue == 'telefono':
         email = cache["telephone"]
-        sentence = 'El telefono del ayuntamiento es el ' + email
+        sentence = 'El número de telefono del ayuntamiento es el ' + email
     elif intentMessage.intent.intent_name == 'velastroll:contacto':
         telephone = cache["telephone"]
-        sentence = 'El número de teléfono del ayuntamiento es el ' + telephone
+        sentence = json.dump(intentMessage)
     else:
         return
     
