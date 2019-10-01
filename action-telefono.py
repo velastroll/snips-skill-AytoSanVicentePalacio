@@ -1,4 +1,4 @@
-!/usr/bin/env python3
+#!/usr/bin/env python3
 from hermes_python.hermes import Hermes
 import hermes_python 
 from urls_ayto import urls_dict
