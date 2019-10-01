@@ -20,13 +20,14 @@ f = open("/home/pi/exportation.json", "w+")
 print(">>>", cache)
 print("telefono: ", cache["telephone"])
 
+# https://docs.snips.ai/reference/dialogue#intent-classification
 def intent_received(hermes, intentMessage):
     sentence = "Pues "
-    if intentMessage.slot == 'fax':
+    if intentMessage.slots[0].value == 'fax':
         sentence += "Encontrado Fax "
-    if intentMessage.slot == 'email':
+    if intentMessage.slots[0].value == 'email':
         sentence += " encontrado email "
-    if intentMessage.slot == "telefono":
+    if intentMessage.slots[0].value == "telefono":
         sentence += " encontrado telefono "
 
     
