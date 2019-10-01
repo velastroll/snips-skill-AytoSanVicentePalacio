@@ -21,14 +21,14 @@ print(">>>", cache)
 print("telefono: ", cache["telephone"])
 
 def intent_received(hermes, intentMessage):
-    #export intent message
-    f.write(intentMessage)
-    f.close
-
-    if intentMessage.slots.length != 0:
-        sentence = "La longitud del slot es diferente que cero"
-    else:
-        sentence = "La longitud del slot es igual a cero"
+    sentence = "Pues "
+    for index, item in enumerate(intentMessage["slots"]):
+        if item.rawValue == 'fax':
+            sentence += "Encontrado Fax "
+        if item.rawValue == 'email':
+            sentence += " encontrado email "
+        if item.rawValue == "telefono":
+            sentence += " encontrado telefono "
     
     hermes.publish_end_session(intentMessage.session_id, sentence)
     
