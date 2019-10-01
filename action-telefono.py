@@ -19,8 +19,8 @@ print(">>>", cache)
 print("telefono: ", cache["telephone"])
 
 def intent_received(hermes, intentMessage):
-    
-    if intentMessage.slots.category.first().value == 'fax':
+
+    if intentMessage.slots.fax:
         sentence = 'El número de faxs es el '
     elif intentMessage.intent.intent_name == 'velastroll:contacto':
         telephone = cache["telephone"]
