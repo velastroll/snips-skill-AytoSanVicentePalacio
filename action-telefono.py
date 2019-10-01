@@ -22,13 +22,13 @@ print("telefono: ", cache["telephone"])
 
 def intent_received(hermes, intentMessage):
     sentence = "Pues "
-    for index, item in enumerate(intentMessage["slots"]):
-        if item.rawValue == 'fax':
-            sentence += "Encontrado Fax "
-        if item.rawValue == 'email':
-            sentence += " encontrado email "
-        if item.rawValue == "telefono":
-            sentence += " encontrado telefono "
+    if intentMessage.slot == 'fax':
+        sentence += "Encontrado Fax "
+    if intentMessage.slot == 'email':
+        sentence += " encontrado email "
+    if intentMessage.slot == "telefono":
+        sentence += " encontrado telefono "
+
     
     hermes.publish_end_session(intentMessage.session_id, sentence)
     
