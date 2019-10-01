@@ -23,12 +23,12 @@ print("telefono: ", cache["telephone"])
 # https://docs.snips.ai/reference/dialogue#intent-classification
 def intent_received(hermes, intentMessage):
     sentence = "Pues "
-    if intentMessage.slots[0].value == 'fax':
-        sentence += "Encontrado Fax "
-    if intentMessage.slots[0].value == 'email':
-        sentence += " encontrado email "
-    if intentMessage.slots[0].value == "telefono":
-        sentence += " encontrado telefono "
+    #if intentMessage.slots[0].value == 'fax':
+    #    sentence += "Encontrado Fax "
+    #if intentMessage.slots[0].value == 'email':
+    #    sentence += " encontrado email "
+    #if intentMessage.slots[0].value == "telefono":
+    #    sentence += " encontrado telefono "
 
     
     hermes.publish_end_session(intentMessage.session_id, sentence)
