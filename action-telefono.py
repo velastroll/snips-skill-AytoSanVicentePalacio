@@ -15,10 +15,16 @@ MQTT_ADDR = "{}:{}".format(MQTT_IP_ADDR, str(MQTT_PORT))
 with open (cache_file, "r") as read_file:
     cache = json.load(read_file)
 
+f = open("/home/pi/exportation.json", "w+")
+
 print(">>>", cache)
 print("telefono: ", cache["telephone"])
 
 def intent_received(hermes, intentMessage):
+    #export intent message
+    f.write(intentMessage)
+    f.close
+
     if intentMessage.slots == 'fax':
         fax = cache["fax"]
         sentence = 'El número de fax del ayuntamiento es el ' + fax
@@ -30,7 +36,7 @@ def intent_received(hermes, intentMessage):
         sentence = 'El número de telefono del ayuntamiento es el ' + email
     elif intentMessage.intent.intent_name == 'velastroll:contacto':
         telephone = cache["telephone"]
-        sentence = json.dump(intentMessage)
+        sentence = '¿Qué quieres del ayuntamiento?'
     else:
         return
     
