@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+!/usr/bin/env python3
 from hermes_python.hermes import Hermes
 import hermes_python 
 from urls_ayto import urls_dict
@@ -15,20 +15,11 @@ MQTT_ADDR = "{}:{}".format(MQTT_IP_ADDR, str(MQTT_PORT))
 with open (cache_file, "r") as read_file:
     cache = json.load(read_file)
 
-f = open("/home/pi/exportation.json", "w+")
-
 print(">>>", cache)
 print("telefono: ", cache["telephone"])
 
-# https://docs.snips.ai/reference/dialogue#intent-classification
 def intent_received(hermes, intentMessage):
-    #if intentMessage.slots[0].value == 'fax':
-    #    sentence += "Encontrado Fax "
-    #elif intentMessage.slots[0].value == 'email':
-    #    sentence += " encontrado email "
-    #elif intentMessage.slots[0].value == "telefono":
-    #    sentence += " encontrado telefono "
-    #el
+
     if intentMessage.intent.intent_name == 'velastroll:contacto':
         telephone = cache["telephone"]
         sentence = 'El número de teléfono del ayuntamiento es el ' + telephone
