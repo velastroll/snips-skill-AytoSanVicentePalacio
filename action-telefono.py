@@ -32,6 +32,8 @@ def intent_received(hermes, intentMessage):
             sentence = 'El correo electrónico del ayuntamiento es el ' + email
         else:
             return
+    else:
+        sentence = "Lo siento, no te he entendido."
     
     hermes.publish_end_session(intentMessage.session_id, sentence)
     
