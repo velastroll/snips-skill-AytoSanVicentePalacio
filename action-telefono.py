@@ -31,7 +31,7 @@ def intent_received(hermes, intentMessage):
             email = cache["email"]
             sentence = 'El correo electrónico del ayuntamiento es el ' + email
         else:
-            return
+            sentence = "Oh my god."
     else:
         sentence = "Lo siento, no te he entendido."
     
